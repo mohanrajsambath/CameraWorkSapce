@@ -9,6 +9,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/HoverTouchFocus" />
+            <option value="$PROJECT_DIR$/only2cameramodepreview" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

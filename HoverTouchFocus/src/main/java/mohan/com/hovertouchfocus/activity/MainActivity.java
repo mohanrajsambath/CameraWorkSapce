@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getActivityContext = MainActivity.this;
         initUI();
         initFocusImage();
+        initAnimation();
     }
 
     private void initUI() {
@@ -216,7 +217,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setUpCameraOutputs(viewWidth, viewHeight);
         configureTransform(viewWidth, viewHeight);
         initOutputSurface();
-        //打开相机
+        //Turn on the camera
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
 
             //    ActivityCompat#requestPermissions
@@ -234,6 +235,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /*Generate a PreviewSession object*/
     private void newPreviewSession() {
+        //mPreviewSessionCallback = new PreviewSessionCallback(mMainHandler, mTextureView);
         mPreviewSessionCallback = new PreviewSessionCallback(mFocusImage, mMainHandler, mTextureView);
     }
 
@@ -592,7 +594,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             setUpCameraOutputs(viewWidth, viewHeight);
             configureTransform(viewWidth, viewHeight);
             if (ActivityCompat.checkSelfPermission(getActivityContext, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-
                 //    ActivityCompat#requestPermissions
                 // here to request the missing permissions, and then overriding
                 //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
@@ -602,6 +603,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 return;
             }
             mCameraManager.openCamera(mCameraId, mCameraDeviceStateCallback, mHandler);
+            newPreviewSession();
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }

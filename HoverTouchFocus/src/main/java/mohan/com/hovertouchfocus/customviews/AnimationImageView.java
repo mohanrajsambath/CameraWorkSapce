@@ -13,8 +13,8 @@ import mohan.com.hovertouchfocus.activity.MainActivity;
 import mohan.com.hovertouchfocus.utils.SleepThread;
 
 
-@SuppressLint("AppCompatCustomView")
-public class AnimationImageView extends ImageView {
+
+public class AnimationImageView extends android.support.v7.widget.AppCompatImageView {
     private Handler mMainHandler;
     private Animation mAnimation;
     private Context mContext;
@@ -38,10 +38,10 @@ public class AnimationImageView extends ImageView {
         mContext = context;
     }
 
-    public AnimationImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    /*public AnimationImageView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         mContext = context;
-    }
+    }*/
 
     public void setmMainHandler(Handler mMainHandler) {
         this.mMainHandler = mMainHandler;
@@ -59,7 +59,11 @@ public class AnimationImageView extends ImageView {
     public void startFocusing() {
         mTimes++;
         this.setVisibility(View.VISIBLE);
-        this.startAnimation(mAnimation);
+        try {
+            this.startAnimation(mAnimation);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         this.setBackground(mContext.getDrawable(R.drawable.focus));
         new Thread(new SleepThread(mMainHandler, MainActivity.FOCUS_DISAPPEAR, 1000, mTimes)).start();
     }

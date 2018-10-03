@@ -1,1 +1,1 @@
-include ':HoverTouchFocus'
+include ':HoverTouchFocus', ':only2cameramodepreview'
