@@ -89,9 +89,10 @@
                         </option>
                         <option name="values">
                           <map>
+                            <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_camera_rear" />
-                            <entry key="sourceFile" value="$USER_HOME$" />
+                            <entry key="outputName" value="ic_circle_solid" />
+                            <entry key="sourceFile" value="$USER_HOME$/Downloads/circle-solid.svg" />
                           </map>
                         </option>
                       </PersistentState>

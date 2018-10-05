@@ -1,4 +1,4 @@
-package mohan.com.hovertouchfocus.customviews;
+package mohan.com.camrecorder.views;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -26,6 +26,7 @@ public class CustomTextureView extends TextureView {
     private int mRatioHeight = 0;
     private MyTextureViewTouchEvent mMyTextureViewTouchEvent;
     private FocusPositionTouchEvent mFocusPositionTouchEvent;
+
 
 
     /*Constructors*/
@@ -93,5 +94,4 @@ public class CustomTextureView extends TextureView {
     public interface FocusPositionTouchEvent {
         public void getPosition(MotionEvent event);
     }
-
 }
