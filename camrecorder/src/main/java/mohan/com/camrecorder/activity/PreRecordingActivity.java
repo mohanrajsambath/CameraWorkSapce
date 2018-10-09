@@ -3,6 +3,7 @@ package mohan.com.camrecorder.activity;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.ImageFormat;
@@ -78,15 +79,14 @@ public class PreRecordingActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_prerecording);
         getActivityContext = PreRecordingActivity.this;
-        initUI();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
+        initUI();
     }
 
     private void initUI() {
@@ -110,7 +110,11 @@ public class PreRecordingActivity extends AppCompatActivity implements View.OnCl
                 break;
             case R.id.imgVw_rec_light:
             case R.id.imgVw_rec_solid:
-
+                closeCamera();
+                Intent recordingIO= new Intent(PreRecordingActivity.this,RecordingActivity.class);
+                recordingIO.putExtra("CAMERAID", mCameraId) ;
+                startActivity(recordingIO);
+                finish();
                 break;
             default:
                 break;

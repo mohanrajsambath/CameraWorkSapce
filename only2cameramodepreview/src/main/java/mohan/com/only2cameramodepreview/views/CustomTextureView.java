@@ -24,8 +24,8 @@ public class CustomTextureView extends TextureView {
 
     private int mRatioWidth = 0;
     private int mRatioHeight = 0;
-    private MyTextureViewTouchEvent mMyTextureViewTouchEvent;
-    private FocusPositionTouchEvent mFocusPositionTouchEvent;
+    //private MyTextureViewTouchEvent mMyTextureViewTouchEvent;
+   // private FocusPositionTouchEvent mFocusPositionTouchEvent;
 
 
 
@@ -72,20 +72,20 @@ public class CustomTextureView extends TextureView {
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    @Override
+    /*@Override
     public boolean onTouchEvent(MotionEvent event) {
-        mFocusPositionTouchEvent.getPosition(event);
+       // mFocusPositionTouchEvent.getPosition(event);
         return mMyTextureViewTouchEvent.onAreaTouchEvent(event);
-    }
+    }*/
 
 
-    public void setmMyTextureViewTouchEvent(MyTextureViewTouchEvent myTextureViewTouchEvent) {
+    /*public void setmMyTextureViewTouchEvent(MyTextureViewTouchEvent myTextureViewTouchEvent) {
         this.mMyTextureViewTouchEvent = myTextureViewTouchEvent;
-    }
+    }*/
 
-    public void setmFocusPositionTouchEvent(FocusPositionTouchEvent mFocusPositionTouchEvent) {
+    /*public void setmFocusPositionTouchEvent(FocusPositionTouchEvent mFocusPositionTouchEvent) {
         this.mFocusPositionTouchEvent = mFocusPositionTouchEvent;
-    }
+    }*/
 
     public interface MyTextureViewTouchEvent {
         public boolean onAreaTouchEvent(MotionEvent event);

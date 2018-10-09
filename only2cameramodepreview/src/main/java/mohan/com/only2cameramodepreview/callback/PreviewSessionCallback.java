@@ -24,7 +24,7 @@ public class PreviewSessionCallback extends CameraCaptureSession.CaptureCallback
 
     public PreviewSessionCallback( Handler mMainHandler, CustomTextureView mMyTextureView) {
         this.mMainHandler = mMainHandler;
-        mMyTextureView.setmFocusPositionTouchEvent(this);
+        //mMyTextureView.setmFocusPositionTouchEvent(this);
     }
 
 

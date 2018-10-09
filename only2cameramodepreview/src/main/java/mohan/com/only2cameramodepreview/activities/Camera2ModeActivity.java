@@ -53,6 +53,7 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
     public ImageView btnChangeCamera;
     private static final int REQUEST_CAMERA_PERMISSION = 1;
     private static final int STATE_PREVIEW = 1;
+    private int mState = 0;
     public static final int FOCUS_AGAIN = 102;
     public Size mPreviewSize;
     public Size mlargest;
@@ -70,7 +71,7 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
     private int mToPreviewWidth,mToPreviewHeight;
     //reopen
     public CameraCaptureSession mCameraCaptureSession;
-    private int mState = 0;
+
     private CaptureRequest.Builder mPreviewBuilder;
     private PreviewSessionCallback mPreviewSessionCallback;
 
@@ -89,7 +90,7 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
         super.onResume();
 
     }
-
+//1
     private void initUI() {
         mTextureView = (CustomTextureView) findViewById(R.id.textureview);
         btnChangeCamera = (ImageView) findViewById(R.id.imgVw_cameraMode);
@@ -98,7 +99,7 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
         mTextureView.setSurfaceTextureListener(mSurfaceTextureListener);
 
     }
-
+//2
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -109,6 +110,7 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
                 break;
         }
     }
+//3
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == REQUEST_CAMERA_PERMISSION) {
@@ -120,6 +122,7 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+//4
     /*Texture listener*/
 
     private TextureView.SurfaceTextureListener mSurfaceTextureListener = new TextureView.SurfaceTextureListener() {
@@ -157,7 +160,7 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
 
 
 
-
+//5
     private void openCamera(int viewWidth, int viewHeight) throws CameraAccessException {
         /*Initialize child thread and handler to handle Camera*/
         initHandler();
@@ -178,10 +181,10 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
         //Turn on the camera
         mCameraManager.openCamera(mCameraId, mCameraDeviceStateCallback, mHandler);
         //Invoke  newPreviewSession CallBack
-        newPreviewSession();
+        //newPreviewSession();
     }
 
-
+//6
     /*Initialize child thread and handler*/
     private void initHandler() {
         mHandlerThread = new HandlerThread("Android_L_Camera");
@@ -191,7 +194,7 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
 
 
 
-
+//7
     /*Configure Preview based on the ScreenOrientation*/
     private void configureTransform(int widthPrev, int heightPrev) {
         if (null == mTextureView || null == mPreviewSize || null == getActivityContext) {
@@ -214,7 +217,7 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
         }
         mTextureView.setTransform(matrix);
     }
-
+//8
     private void getCameraCharacterisitcs(){
         mCameraManager= (CameraManager) getActivityContext.getSystemService(Context.CAMERA_SERVICE);
         String cameraId = null;
@@ -223,16 +226,13 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
-
         try {
             mCameraCharacteristics = Objects.requireNonNull(mCameraManager).getCameraCharacteristics(Objects.requireNonNull(cameraId));
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
-
         mStreamConfigurationMap= Objects.requireNonNull(mCameraCharacteristics).get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
         mPreviewSize = Objects.requireNonNull(mStreamConfigurationMap).getOutputSizes(SurfaceTexture.class)[Integer.parseInt(mCameraId)];
-
     }
 
     /**
@@ -260,7 +260,7 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
             mTextureView.fitWindow(mPreviewSize.getHeight(), mPreviewSize.getWidth());
         }
     }
-
+//9
     private class CompareSizesByArea implements Comparator<Size> {
         @Override
         public int compare(Size lhs, Size rhs) {
@@ -269,7 +269,7 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
         }
 
     }
-
+//10
     private Size chooseOptimalSize(Size[] choices, int width, int height, Size aspectRatio) {
         // Collect the supported resolutions that are at least as big as the preview Surface
         List<Size> bigEnough = new ArrayList<Size>();
@@ -290,7 +290,7 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
-
+//11
     private void initOutputSurface() {
         //Image Format
         mFormat =256;
@@ -310,14 +310,14 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
         //mOutputSurfaces.add(mImageReader.getSurface());
         mOutputSurfaces.add(mSurface);
     }
-
+//12
     /*Generate a PreviewSession object*/
     private void newPreviewSession() {
         //mPreviewSessionCallback = new PreviewSessionCallback(mMainHandler);
         mPreviewSessionCallback = new PreviewSessionCallback(mMainHandler, mTextureView);
     }
 
-
+//13
     /*Change cameraID*/
     private void reOpenCamera(int viewWidth, int viewHeight) {
         getCameraCharacterisitcs();
@@ -357,13 +357,13 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
             }
             mCameraManager.openCamera(mCameraId, mCameraDeviceStateCallback,mHandler);
             //Invoke  newPreviewSession CallBack
-            newPreviewSession();
+            //newPreviewSession();
         } catch (CameraAccessException e) {
             e.printStackTrace();
         }
     }
 
-
+//14
     /*Camera state callback
     and then turn on the camera in onOpened*/
     private CameraDevice.StateCallback mCameraDeviceStateCallback = new CameraDevice.StateCallback() {
@@ -392,7 +392,7 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
             Toast.makeText(getActivityContext, "onError", Toast.LENGTH_SHORT).show();
         }
     };
-
+//15
     /*Session state callback
     Continue preview*/
     private CameraCaptureSession.StateCallback mSessionPreviewStateCallback = new CameraCaptureSession.StateCallback() {
@@ -402,7 +402,7 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
             Log.i("CaptureStateCallback", "mSessionStateCallback--->onConfigured");
             try {
                 mCameraCaptureSession = cameraCaptureSession;
-                setListener();
+               // setListener();
                 cameraCaptureSession.setRepeatingRequest(mPreviewBuilder.build(), mPreviewSessionCallback, mHandler);
             } catch (CameraAccessException e) {
                 e.printStackTrace();
@@ -433,7 +433,7 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
             Log.i("CaptureStateCallback", "mSessionStateCallback--->onClosed");
         }
     };
-
+//16
     /*Start Preview*/
     private void startPreview() {
         try {
@@ -452,12 +452,14 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
             e.printStackTrace();
         }
     }
+//17
     /*Initialize the preview of the builder,
         this is done in order to adjust the iso
          when the ae is not the lowest*/
     private void initPreviewBuilder() {
         mPreviewBuilder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_OFF);
     }
+//18
     /*Update preview*/
     private void updatePreview() {
         try {
@@ -469,7 +471,7 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
             Log.i("updatePreview", "ExceptionExceptionException");
         }
     }
-
+//19
     /*UI thread handler*/
     private Handler mMainHandler = new Handler(Looper.getMainLooper()) {
         @Override
@@ -484,13 +486,14 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
             }
         }
     };
-
+//20
     @Override
     public void onStop() {
         super.onStop();
         Log.i("onDestroy", "onDestroy");
         closeCamera();
     }
+//21
     /**
      * Turn off the camera
      */
@@ -511,12 +514,12 @@ public class Camera2ModeActivity extends AppCompatActivity implements View.OnCli
             }
         }
     }
-
+//22
     /*Set the focus listener
    TextureView of touch*/
     private void setListener() {
         /*The touch zoom monitor is set when the display starts.*/
-        mTextureView.setmMyTextureViewTouchEvent(new TextureViewTouchEvent(mCameraCharacteristics, mTextureView, mPreviewBuilder, mCameraCaptureSession, mHandler, mPreviewSessionCallback));
+        //mTextureView.setmMyTextureViewTouchEvent(new TextureViewTouchEvent(mCameraCharacteristics, mTextureView, mPreviewBuilder, mCameraCaptureSession, mHandler, mPreviewSessionCallback));
     }
 
 }
