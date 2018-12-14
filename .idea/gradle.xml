@@ -9,6 +9,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/HoverTouchFocus" />
+            <option value="$PROJECT_DIR$/camera2_camrecorder" />
+            <option value="$PROJECT_DIR$/camera2java" />
             <option value="$PROJECT_DIR$/camrecorder" />
             <option value="$PROJECT_DIR$/only2cameramodepreview" />
           </set>

@@ -1,1 +1,1 @@
-include ':HoverTouchFocus', ':only2cameramodepreview', ':camrecorder'
+include ':HoverTouchFocus', ':only2cameramodepreview', ':camrecorder', ':camera2_camrecorder', ':camera2java'

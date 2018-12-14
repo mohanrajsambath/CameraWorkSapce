@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PreviewActivity">
+
+
+    <mohan.com.camera2_camrecorder.AutoFitTextureView
+        android:id="@+id/texture"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
+    <ImageView
+        android:id="@+id/imgVw_capture_outline"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_circle_light" />
+
+    <ImageView
+        android:id="@+id/imgVw_capture_solid"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgVw_capture_outline"
+        app:layout_constraintEnd_toEndOf="@+id/imgVw_capture_outline"
+        app:layout_constraintStart_toStartOf="@+id/imgVw_capture_outline"
+        app:layout_constraintTop_toTopOf="@+id/imgVw_capture_outline"
+        app:srcCompat="@drawable/ic_circle_solid" />
+
+    <ImageView
+        android:id="@+id/imgVw_rotate"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_sync_alt_regular" />
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>

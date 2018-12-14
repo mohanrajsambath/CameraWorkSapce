@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CamCouCal</string>
+    <string name="record">Record</string>
+    <string name="stop">Stop</string>
+    <string name="description_info">Info</string>
+    <string name="permission_request">This sample needs permission for camera and audio recording.</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
+    <string name="msg_permission_denied">CamCouCal will need all permissions to proceed. You can go to App Settings to change permission settings for CamCouCal.</string>
+    <string name="permission_settings_txt">APP SETTINGS</string>
+    <string name="permission_exit_ext">EXIT</string>
+    <string name="msg_exit_app">Press again to exit</string>
+</resources>
